@@ -1,0 +1,19 @@
+FROM ubuntu:20.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get --no-install-recommends install -yq git cmake build-essential \
+  libgl1-mesa-dev libsdl2-dev \
+  libsdl2-image-dev libsdl2-ttf-dev libsdl2-gfx-dev libboost-all-dev \
+  libdirectfb-dev libst-dev mesa-utils xvfb x11vnc \
+  python3-pip
+
+RUN python3 -m pip install --upgrade pip setuptools wheel
+RUN python3 -m pip install psutil
+
+RUN python3 -m pip install gfootball
+
+COPY . /grf_marl
+RUN cd /grf_marl && python3 -m pip install -r requirements.txt
+WORKDIR '/grf_marl'
+
+

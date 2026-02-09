@@ -1,5 +1,6 @@
 ray==1.8.0
-omegaconf==2.0.4
+# omegaconf==2.0.4
+omegaconf
 grpcio
 grpcio-tools
 protobuf==3.20.0
